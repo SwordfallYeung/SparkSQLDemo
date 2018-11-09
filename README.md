@@ -15,7 +15,7 @@ commonImsiDs.show()<br/>
 方式2：<br/>
 >val imsiRecord1CommonDs = sparkSession.sql("select t1.imsi, count(t1.imsi) as imsiCount1 from imsiRecord1 t1 group by t1.imsi")<br/>
 imsiRecord1CommonDs.createOrReplaceTempView("imsiRecord1CommonDs")<br/>
-val imsiRecord2CommonDs = sparkSession.sql("select t2.imsi, count(t2.imsi) as imsiCount2 from imsiRecord2 t2 group by t2.imsi")<br/>　　　　
+val imsiRecord2CommonDs = sparkSession.sql("select t2.imsi, count(t2.imsi) as imsiCount2 from imsiRecord2 t2 group by t2.imsi")<br/>
 imsiRecord2CommonDs.createOrReplaceTempView("imsiRecord2CommonDs")<br/>
 val commonDS = sparkSession.sql("select t1.imsi, t1.imsiCount1, t2.imsiCount2 from imsiRecord1CommonDs t1, imsiRecord2CommonDs t2 where t1.imsi=t2.imsi")<br/>
 commonDS.createOrReplaceTempView("commonDS")<br/>
